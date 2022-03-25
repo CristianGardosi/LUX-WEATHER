@@ -24,6 +24,7 @@ export const displayError = (headerMsg, srMsg) => {
   updateScreenReaderConfirmation(srMsg);
 };
 
+// Errore API
 export const displayApiError = (statusCode) => {
   const properMsg = toProperCase(statusCode.message);
   updateWeatherLocationHeader(properMsg);
@@ -220,6 +221,7 @@ const createElem = (elemType, divClassName, divText, unit) => {
   return div;
 };
 
+// Gestione icon. Break e non lista di if, perchè vista la casistica mi sembrava più appropriato
 const translateIconToFontAwesome = (icon) => {
   const i = document.createElement("i");
   const firstTwoChars = icon.slice(0, 2);
@@ -270,6 +272,7 @@ const translateIconToFontAwesome = (icon) => {
   return i;
 };
 
+// Momento corrente
 const displayCurrentConditions = (currentConditionsArray) => {
   const ccContainer = document.getElementById("currentForecast__conditions");
   currentConditionsArray.forEach((cc) => {
@@ -277,6 +280,7 @@ const displayCurrentConditions = (currentConditionsArray) => {
   });
 };
 
+// Settimana
 const displaySixDayForecast = (weatherJson) => {
   for (let i = 1; i <= 6; i++) {
     const dfArray = createDailyForecastDivs(weatherJson.daily[i]);
@@ -284,6 +288,7 @@ const displaySixDayForecast = (weatherJson) => {
   }
 };
 
+// Iformazioni aggiuntive sulla temperatura corrente
 const createDailyForecastDivs = (dayWeather) => {
   const dayAbbreviationText = getDayAbbreviation(dayWeather.dt);
   const dayAbbreviation = createElem(
@@ -308,12 +313,14 @@ const createDailyForecastDivs = (dayWeather) => {
   return [dayAbbreviation, dayIcon, dayHigh, dayLow];
 };
 
+// Lettere iniziali giorni della settimana
 const getDayAbbreviation = (data) => {
   const dateObj = new Date(data * 1000);
   const utcString = dateObj.toUTCString();
   return utcString.slice(0, 3).toUpperCase();
 };
 
+// Creazione icone giorni della settimana
 const createDailyForecastIcon = (icon, altText) => {
   const img = document.createElement("img");
   if (window.innerWidth < 768 || window.innerHeight < 1025) {

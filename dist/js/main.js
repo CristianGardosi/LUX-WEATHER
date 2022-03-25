@@ -117,6 +117,7 @@ const displayHomeLocationWeather = (home) => {
   }
 };
 
+// Funzione per salavare una location come home principale
 const saveLocation = () => {
   if (currentLoc.getLat() && currentLoc.getLon()) {
     const saveIcon = document.querySelector(".fa-save");
@@ -141,12 +142,14 @@ const setUnitPref = () => {
   updateDataAndDisplay(currentLoc);
 };
 
+// Refresh funzione
 const refreshWeather = () => {
   const refreshIcon = document.querySelector(".fa-sync-alt");
   addSpinner(refreshIcon);
   updateDataAndDisplay(currentLoc);
 };
 
+// Cambio location
 const submitNewLocation = async (event) => {
   event.preventDefault();
   const text = document.getElementById("searchBar__text").value;

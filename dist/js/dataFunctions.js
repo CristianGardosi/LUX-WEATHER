@@ -34,6 +34,7 @@ export const getWeatherFromCoords = async (locationObj) => {
   }
 };
 
+// Ricevo coordinate via API, Netlify mi permette l'operazione in maniera serverless, ho inserito la API KEY direttamente su Netlify
 export const getCoordsFromApi = async (entryText, units) => {
   const urlDataObj = {
     text: entryText,

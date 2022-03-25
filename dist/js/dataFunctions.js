@@ -1,6 +1,3 @@
-
-
-
 // JS di gestione delle chiamate e dell'utilizzo dei dati attenuti dall'API
 export const setLocationObject = (locationObj, coordsObj) => {
   const { lat, lon, name, unit } = coordsObj;
